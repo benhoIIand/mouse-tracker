@@ -4,21 +4,24 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jasmine: {
-            pivotal: {
-                src: 'src/**/*.js',
-                options: {
-                    specs: 'spec/*Spec.js'
-                }
+            src: 'js/*.js',
+            options: {
+                specs: 'spec/*Spec.js'
             }
+        },
+        watch: {
+            files: 'js/*.js',
+            tasks: 'test'
         }
     });
 
     // Load plugin(s)
     // grunt.loadNpmTasks('grunt-contrib-uglify');
     // grunt.loadNpmTasks('grunt-contrib-concat');
-    // grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
 
-    // Default task(s).
-    grunt.registerTask('default', ['jasmine']);
+    // Register task(s).
+    grunt.registerTask('test', ['jasmine']);
+    grunt.registerTask('default', ['jasmine', 'watch']);
 };

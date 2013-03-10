@@ -1,4 +1,4 @@
-Mouse Tracker
+mouse-tracker
 =============
 
-Simple script to track mouse movement
+Simple mouse tracker with tests
