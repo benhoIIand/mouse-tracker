@@ -6,12 +6,12 @@ describe('Mouse Tracker', function() {
             this.tracker = new Tracker();
         });
 
-        it('should not be active', function() {
+        it('and should not be active', function() {
             var active = this.tracker.getState();
             expect(active).toEqual(false);
         });
 
-        it('should have an empty array of positions', function() {
+        it('and should have an empty array of positions', function() {
             var positions = this.tracker.getPositions();
             expect(positions).toEqual([]);
         });
@@ -20,12 +20,18 @@ describe('Mouse Tracker', function() {
     describe('is started', function() {
         beforeEach(function() {
             this.tracker = new Tracker();
+            this.tracker.startTracking();
         });
 
-        it('should not be active', function() {
-            this.tracker.startTracking();
+        it('and should not be active', function() {
             var active = this.tracker.getState();
             expect(active).toEqual(true);
+        });
+
+        it('and should be tracking', function() {
+            this.tracker.setPositions({pageX: 2, pageY: 3});
+
+            expect(this.tracker.positionArray).toEqual([{x: , y: 3}]);
         });
     });
 
@@ -34,7 +40,7 @@ describe('Mouse Tracker', function() {
             this.tracker = new Tracker();
         });
 
-        it('should not be active', function() {
+        it('and should not be active', function() {
             this.tracker.stopTracking();
             var active = this.tracker.getState();
             expect(active).toEqual(false);
