@@ -128,26 +128,6 @@ describe('Mouse Tracker', function() {
             expect(mouse.offsetLeft).toEqual(823);
             expect(mouse.offsetTop).toEqual(425);
         });
-
-        // it('and is paused', function() {
-        //     var _this = this;
-
-        //     this.tracker.play(true);
-
-        //     _this.tracker.pause();
-        //     expect(_this.tracker.currentIndex).toEqual(2);
-        // });
-
-        // it('and is stopped', function() {
-        //     var _this = this;
-
-        //     this.tracker.play(true);
-        //     setTimeout(function() {
-        //         _this.tracker.pause();
-        //         console.log(_this.tracker.currentIndex);
-        //         expect(_this.tracker.currentIndex).toEqual(0);
-        //     }, 60);
-        // });
     });
 
 });

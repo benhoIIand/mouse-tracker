@@ -51,7 +51,7 @@ Tracker.fn.storePositions = function() {
     localStorage[this.storageName] = JSON.stringify(this.positionArray);
 };
 
-Tracker.fn.playback = function(play) {
+Tracker.fn.playback = function(index) {
 
     if(!this.mouse) {
         var body = document.getElementsByTagName('body')[0],
@@ -67,11 +67,11 @@ Tracker.fn.playback = function(play) {
     this.mouse.style.top = 0;
     this.mouse.style.left = 0;
 
-    this.currentIndex = 0;
+    this.currentIndex = index || 0;
 
     clearInterval(this.playbackInterval);
 
-    if(play) this.play();
+    this.play();
 
     return this;
 };
@@ -105,10 +105,10 @@ Tracker.fn.stepToPosition = function(index) {
     return this;
 };
 
-Tracker.fn.play = function(index) {
-    if(index) this.currentIndex = index;
-
+Tracker.fn.play = function() {
     var _this = this;
+
+    if(!this.mouse) this.playback();
 
     this.playbackInterval = setInterval(function() {
         if(_this.currentIndex === _this.positionArray.length) {
@@ -131,9 +131,6 @@ Tracker.fn.stop = function() {
 Tracker.fn.reset = function() {
     this.stop();
 };
-
-
-
 
 
 window.onload = function() {
